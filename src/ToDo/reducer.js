@@ -36,6 +36,7 @@ export default (state, action) => {
         case "NEW_ITEM": return addItem(state, action);
         case "REMOVE_ITEM": return removeItem(state, action);
         case "CHANGE_ITEM": return updateItem(state, action);
+        case "MARK_COMPLETED": return completeItem(state, action);
         default: return state;
     }
 };

@@ -149,4 +149,10 @@ it('reduces', () => {
 
     // check it's been changed
     expect(newState.items[1]).toEqual({ task: "Dad", completed: false });
+
+    // 05 mark index 1 as completed
+    newState = reducer(newState, { type: "MARK_COMPLETED", index: 1 });
+
+    // check it's been updated
+    expect(newState.items[1]).toEqual({ task: "Dad", completed: true });
 });
