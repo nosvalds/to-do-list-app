@@ -21,3 +21,12 @@ export const updateItem = (state, { index, value }) => {
         })
     };
 }
+
+export const completeItem = (state, { index }) => {
+    return {
+        ...state,
+        items: state.items.map((item, i) =>{
+            return i === index ? {...item, completed: true} : item;
+        })
+    }
+}
