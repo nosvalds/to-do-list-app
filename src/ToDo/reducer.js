@@ -35,6 +35,7 @@ export default (state, action) => {
     switch (action.type) {
         case "NEW_ITEM": return addItem(state, action);
         case "REMOVE_ITEM": return removeItem(state, action);
+        case "CHANGE_ITEM": return updateItem(state, action);
         default: return state;
     }
 };
