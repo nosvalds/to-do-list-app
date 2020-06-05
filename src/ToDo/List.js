@@ -29,17 +29,21 @@ const List = () => {
     setInput(e.currentTarget.value);
   };
 
+  // handle submit of the form
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch({
+        type: "NEW_ITEM", 
+        value: input 
+    })
+    setInput("");
+  }
+
   return (
     <div className="card">
         <form 
             className="card-header"
-            onSubmit={ (e) => {
-                e.preventDefault();
-                dispatch({
-                    type: "NEW_ITEM", 
-                    value: input 
-                })
-            }}
+            onSubmit={ handleSubmit }        
         > 
         { /* add task input */ }
         <input
