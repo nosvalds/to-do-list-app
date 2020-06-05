@@ -18,6 +18,12 @@ it('adds items', () => {
 
     // 02 shouldn't be the same array we started with
     expect(result.items).not.toBe(initialState.items);
+
+    // 03 passing in the previous result, which already had one item
+    result = addItem(result, { value: "Mum" });
+
+    // should be two items
+    expect(result.items.length).toBe(2);
 });
 
 it('removes items', () => {
