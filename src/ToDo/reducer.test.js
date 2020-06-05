@@ -24,6 +24,10 @@ it('adds items', () => {
 
     // should be two items
     expect(result.items.length).toBe(2);
+
+    // 04 check both items are now in items, in order given
+    expect(result.items[0]).toEqual({ task: "Hello", completed: false });
+    expect(result.items[1]).toEqual({ task: "Mum", completed: false });
 });
 
 it('removes items', () => {
