@@ -117,9 +117,30 @@ it('completes items', () => {
 
 it('reduces', () => {
     // Reducer tests here
-    // pass in a nonsense action
+    // 01 pass in a nonsense action
     let newState = reducer(initialState, { type: "GOTTA_CATCH_EM_ALL" });
 
     // get back initial state
     expect(newState).toBe(initialState);
+
+    // 02 use the NEW_ITEM action, passing a value
+    newState = reducer(initialState, { type: "NEW_ITEM", value: "Hello" });
+
+    // make sure it's been added
+    expect(newState.items[0]).toEqual({ task: "Hello", completed: false });
+
+    // 03 add some more items
+    newState = reducer(newState, { type: "NEW_ITEM", value: "Mum" });
+    newState = reducer(newState, { type: "NEW_ITEM", value: "How" });
+    newState = reducer(newState, { type: "NEW_ITEM", value: "Are" });
+    newState = reducer(newState, { type: "NEW_ITEM", value: "You" });
+
+    // check they've been added
+    expect(newState.items.length).toBe(5);
+
+    // remove item at index 2
+    newState = reducer(newState, { type: "REMOVE_ITEM", index: 2 });
+
+    // check index 3 has moved down to index 2
+    expect(newState.items[2]).toEqual({ task: "Are", completed: false });
 });
