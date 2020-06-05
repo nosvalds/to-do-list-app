@@ -32,7 +32,7 @@ it('adds items', () => {
 
 it('removes items', () => {
     // Removing tests here
-    // start with a few items
+    // 01 start with a few items
     let many = {
         items: [
             { task: "Hello", completed: true },
@@ -49,6 +49,9 @@ it('removes items', () => {
 
     // "Hello" should be gone, so should get back "Mum" task
     expect(removed.items[0]).toEqual({ task: "Mum", completed: false });
+
+    // check that it's not the same object being returned
+    expect(removed.items).not.toBe(many.items);
 });
 
 it('updates items', () => {
