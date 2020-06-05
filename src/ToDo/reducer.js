@@ -9,12 +9,14 @@ export const removeItem = (state, { index }) => {
     let newState = {...state};
     newState.items = [...state.items];
     newState.items.splice(index, 1);
-    return newState;
+    return newState; // use a filter to remove item
 }
 
-export const updateItem = (state, { index, value}) => {
-    let newState = {...state};
-    newState.items = [...state.items];
-    newState.items[index].task = value;
-    return newState;
+export const updateItem = (state, { index, value }) => {
+    return {
+        ...state,
+        items: state.items.map((item, i) =>{
+            return i === index ? {...item, task: value} : item;
+        })
+    };
 }
