@@ -1,44 +1,32 @@
-const deepCopyFunction = (inObject) => {
-    let outObject, value, key
-  
-    if (typeof inObject !== "object" || inObject === null) {
-      return inObject // Return the value if inObject is not an object
-    }
-  
-    // Create an array or object to hold the values
-    outObject = Array.isArray(inObject) ? [] : {}
-  
-    for (key in inObject) {
-      value = inObject[key]
-  
-      // Recursively (deep) copy for nested objects, including arrays
-      outObject[key] = deepCopyFunction(value)
-    }
-  
-    return outObject
-  }
-
-
 export const addItem = (state, { value }) => {
-    let newState = deepCopyFunction(state);
-    newState.items.push({ task: value, completed: false });
-    return newState
+    return {...state,
+                    items: [...state.items,
+                        { task: value, completed: false } // add in item with value
+                    ]
+    };
 };
 
 export const removeItem = (state, { index }) => {
-    let newState = deepCopyFunction(state);
-    newState.items.splice(index, 1);
-    return newState;
+    return {
+        ...state,
+        items: state.items.filter((item, i) => i !== index) // filter to remove the item where index matches i
+    };
 }
 
 export const updateItem = (state, { index, value }) => {
-    let newState = deepCopyFunction(state);
-    newState.items[index].task = value;
-    return newState;
+    return {
+        ...state,
+        items: state.items.map((item, i) =>{
+            return i === index ? {...item, task: value} : item;
+        })
+    };
 }
 
 export const completeItem = (state, { index }) => {
-    let newState = deepCopyFunction(state);
-    newState.items[index].completed = true;
-    return newState;
+    return {
+        ...state,
+        items: state.items.map((item, i) =>{
+            return i === index ? {...item, completed: true} : item;
+        })
+    }
 }
