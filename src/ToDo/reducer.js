@@ -30,3 +30,7 @@ export const completeItem = (state, { index }) => {
         })
     }
 }
+
+export default (state, action) => {
+    return state;
+};
