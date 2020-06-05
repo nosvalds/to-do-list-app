@@ -1,3 +1,6 @@
 export const addItem = (state, { value }) => {
-    // … your code here
+    let result = {};
+    result.items = [];
+    result.items.push({ task: value, completed: false });
+    return result
 };
