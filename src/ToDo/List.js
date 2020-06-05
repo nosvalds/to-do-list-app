@@ -89,7 +89,7 @@ const List = () => {
                 {index === editIndex ? 
                 // Editing an item
                 <form 
-                    className=""
+                    className="d-flex"
                     onSubmit={ (e) => handleSaveChange(e, index) }        
                 > 
                     <input
@@ -98,13 +98,14 @@ const List = () => {
                         value={ editInput }
                     />
                     <button 
-                        className="btn btn-sm btn-primary mr-1"
+                        className="btn btn-sm btn-primary ml-2"
                     >
                         Save
                     </button>
                 </form> : 
                 // Normal display (Not editing)
-                (<span
+                <>
+                <span
                   className="flex-grow-1"
                   style={ {
                     cursor: "pointer",
@@ -113,26 +114,26 @@ const List = () => {
                   onClick={ () => dispatch({ type: "MARK_COMPLETED", index: index })}
                 >
                     { item.task }
-                </span>)}
+                </span>
 
-                { /* only show edit button  when not in edit mode */ }
-                { index === editIndex ? null :
-                    <button 
-                        className="btn btn-sm btn-primary mr-1"
-                        onClick={ () => handleEdit(index) }
-                    >
-                        Edit
-                    </button>
-                }
+                {/* Edit button */}
+                <button 
+                    className="btn btn-sm btn-primary mr-1"
+                    onClick={ () => handleEdit(index) }
+                >
+                    Edit
+                </button>
 
-                { /* remove button */ }
+                {/* Remove button */ }
                 <button 
                     className="btn btn-sm btn-danger"
                     onClick={ () => dispatch({ type: "REMOVE_ITEM", index: index })}
                 >
                     &times;
                 </button>
-              </li>
+                </>
+                }
+             </li>
             )) }
           </ul>
         )}

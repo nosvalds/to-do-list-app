@@ -1,15 +1,19 @@
 export const addItem = (state, { value }) => {
-    return {...state,
-                    items: [...state.items,
-                        { task: value, completed: false } // add in item with value
-                    ]
+    return {
+        ...state,
+        items: [...state.items,
+            { 
+                task: value, 
+                completed: false 
+            } // add in item with value
+        ]
     };
 };
 
 export const removeItem = (state, { index }) => {
     return {
         ...state,
-        items: state.items.filter((item, i) => i !== index) // filter to remove the item where index matches i
+        items: state.items.filter((_, i) => i !== index) // filter to remove the item where index matches i
     };
 }
 
