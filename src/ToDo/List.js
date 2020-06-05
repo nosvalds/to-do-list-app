@@ -57,7 +57,10 @@ const List = () => {
                     cursor: "pointer",
                     textDecoration: item.completed ? "line-through" : ""
                   } }
-                >{ item.task }</span>
+                  onClick={ () => dispatch({ type: "MARK_COMPLETED", index: index })}
+                >
+                    { item.task }
+                </span>
 
                 { /* edit button */ }
                 <button className="btn btn-sm btn-primary mr-1">Edit</button>
