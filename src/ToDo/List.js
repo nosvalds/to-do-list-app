@@ -31,7 +31,16 @@ const List = () => {
 
   return (
     <div className="card">
-      <form className="card-header">
+        <form 
+            className="card-header"
+            onSubmit={ (e) => {
+                e.preventDefault();
+                dispatch({
+                    type: "NEW_ITEM", 
+                    value: input 
+                })
+            }}
+        > 
         { /* add task input */ }
         <input
           className="form-control"
