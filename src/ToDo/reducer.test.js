@@ -79,10 +79,10 @@ it('updates items', () => {
     // should have updated the task property
     expect(updated.items[1]).toEqual({ task: "Dad", completed: false });
 
-    // check that it's not the same object being returned
+    // 02 check that it's not the same object being returned
     expect(updated.items[1]).not.toBe(many.items[1]);
 
-    // update the item at index 0
+    // 03 update the item at index 0
     updated = updateItem(many, { index: 0, value: "Good Morning" });
 
     // check that the completed value is the same
@@ -91,6 +91,19 @@ it('updates items', () => {
 
 it('completes items', () => {
     // Completing tests here
+    // 01
+    let many = {
+        items: [
+            { task: "Hello", completed: true },
+            { task: "Mum", completed: false },
+        ]
+    };
+    
+    // complete the item at index 1
+    let completed = completeItem(many, { index: 1 });
+    
+    // expected completed to be true
+    expect(completed.items[1]).toEqual({ task: "Mum", completed: true });
 });
 
 it('reduces', () => {

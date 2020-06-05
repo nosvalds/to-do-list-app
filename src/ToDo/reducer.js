@@ -36,3 +36,9 @@ export const updateItem = (state, { index, value }) => {
     newState.items[index].task = value;
     return newState;
 }
+
+export const completeItem = (state, { index }) => {
+    let newState = deepCopyFunction(state);
+    newState.items[index].completed = true;
+    return newState;
+}
