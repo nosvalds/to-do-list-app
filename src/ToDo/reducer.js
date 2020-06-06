@@ -1,4 +1,9 @@
 export const addItem = (state, { value }) => {
+    let values = value.split(/\W+/); // split into array of words
+    let array = [...values.map((newWord) => {
+        return {text: newWord, value: 1}
+    })]
+    console.log(array.filter(oldWord => oldWord.text === "hello")[0].value);
     return {
         ...state,
         items: [...state.items,
@@ -6,7 +11,14 @@ export const addItem = (state, { value }) => {
                 task: value, 
                 completed: false 
             } // add in item with value
-        ]
+        ],
+        words: values.map((newWord) => {
+            if (state.words.filter(oldWord => oldWord.text === newWord).length == 0) {
+                 return { text: newWord, value: 1 }
+            } else {
+                return { text: newWord, value: 2 }
+            }
+        })
     };
 };
 

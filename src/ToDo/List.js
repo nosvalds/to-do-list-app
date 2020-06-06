@@ -5,6 +5,7 @@ import reducer from "./reducer";
 // put in some dummy content to start with
 const initialState = {
   items: [],
+  words: [], // add to track words for wordcloud
 };
 
 // component
